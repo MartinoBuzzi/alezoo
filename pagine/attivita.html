@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sezione: Attività dello zoo">
+  <title>Attività dello Zoo - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Scopri le attività offerte dal nostro zoo</h1>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow">
+    <div class="section-title">
+      <h2>Le nostre attività</h2>
+    </div>
+
+    <div class="zoo-grid zoo-grid-3">
+      <div class="zoo-card">
+        <img src="../img_liste/laboratori.jpg" alt="Laboratori">
+        <div class="zoo-card-body">
+          <h3>Laboratori didattici</h3>
+          <p>Partecipa ai nostri laboratori educativi per scoprire le mille opportunità della natura.</p>
+        </div>
+      </div>
+
+      <div class="zoo-card">
+        <img src="../img_liste/esperti.jpg" alt="Guardiano dello zoo con pappagallo">
+        <div class="zoo-card-body">
+          <h3>Momenti di connessione</h3>
+          <p>Osserva i nostri animali durante i momenti più speciali insieme ai nostri esperti.</p>
+        </div>
+      </div>
+
+      <div class="zoo-card">
+        <img src="../img_liste/tour.jpg" alt="Tour">
+        <div class="zoo-card-body">
+          <h3>Tour guidati</h3>
+          <p>Scopri lo zoo con i nostri tour guidati e approfondisci curiosità e storie sui nostri animali.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--sand);">
+  <div class="container-narrow">
+    <div class="section-title">
+      <h2>Dettagli delle attività disponibili</h2>
+    </div>
+
+    <div class="zoo-grid zoo-grid-2">
+      <div>
+        <h3 style="text-align:center;">Laboratori</h3>
+        <ul class="activity-list">
+          <li>
+            <span class="material-icons">child_care</span>
+            <span><strong>Under 10:</strong> vieni a vedere il parco da una nuova prospettiva! — durata: 2 ore</span>
+          </li>
+          <li>
+            <span class="material-icons">science</span>
+            <span><strong>Under 15:</strong> animali e scienza, scopri i segreti del mondo! — durata: 1 ora</span>
+          </li>
+          <li>
+            <span class="material-icons">lightbulb</span>
+            <span><strong>Aperto a tutti:</strong> solo per i più curiosi! — durata: 1 ora</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="text-align:center;">Tour guidati</h3>
+        <ul class="activity-list">
+          <li>
+            <span class="material-icons">map</span>
+            <span>Visita il parco con i nostri migliori esperti — durata: 2 ore</span>
+          </li>
+          <li>
+            <span class="material-icons">travel_explore</span>
+            <span>Segui la guida all'interno del regno dei volatili — durata: 1 ora</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+</body>
+</html>

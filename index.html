@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ALEZOO, lo zoo di Alessandria: animali, laboratori didattici, tour guidati ed eventi per tutta la famiglia.">
+  <title>ALEZOO - Zoo di Alessandria</title>
+
+  <link rel="icon" type="image/png" href="img/logo_alezoo.png">
+  <meta property="og:title" content="ALEZOO - Zoo di Alessandria">
+  <meta property="og:description" content="Animali, laboratori didattici, tour guidati ed eventi per tutta la famiglia.">
+  <meta property="og:image" content="img/logo_alezoo.png">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body data-root="">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="pagine/chi-siamo.html">Chi siamo</a></li>
+      <li><a href="pagine/vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="pagine/attivita.html">Attività</a></li>
+      <li><a href="pagine/prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="pagine/eventi.html">Eventi</a></li>
+      <li><a href="pagine/galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="pagine/carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="pagine/admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="pagine/login.html">Accedi</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Benvenuti allo zoo di Alessandria!</h1>
+    <p class="lead">
+      Un mondo di animali da scoprire, tra laboratori didattici, tour guidati
+      ed esperienze pensate per tutta la famiglia.
+    </p>
+    <div class="hero-actions">
+      <a href="pagine/prezzi-orari.html" class="btn-zoo btn-zoo-primary">Prezzi e orari</a>
+      <a href="pagine/eventi.html" class="btn-zoo btn-zoo-outline">Scopri gli eventi</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow">
+    <div class="section-title reveal">
+      <h2>Gli animali più amati</h2>
+      <p>Quattro habitat, quattro storie diverse da incontrare da vicino.</p>
+    </div>
+
+    <div class="zoo-grid zoo-grid-3">
+      <div class="zoo-card reveal">
+        <img src="img/coccodrillo1.jpg" alt="Coccodrillo">
+        <div class="zoo-card-body">
+          <h3>Coccodrilli</h3>
+          <p>Dei predatori incredibili.</p>
+        </div>
+      </div>
+
+      <div class="zoo-card reveal">
+        <img src="img/zebra1.jpg" alt="Zebra">
+        <div class="zoo-card-body">
+          <h3>Zebre</h3>
+          <p>Spettacoli a strisce.</p>
+        </div>
+      </div>
+
+      <div class="zoo-card reveal">
+        <img src="img/leone1.jpg" alt="Leone">
+        <div class="zoo-card-body">
+          <h3>Leoni</h3>
+          <p>Il maestoso re della savana.</p>
+        </div>
+      </div>
+
+      <div class="zoo-card reveal">
+        <img src="img/panda1.jpg" alt="Panda">
+        <div class="zoo-card-body">
+          <h3>Panda</h3>
+          <p>Cosa c'è di più dolce?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--sand);">
+  <div class="container-narrow zoo-grid zoo-grid-2">
+    <div class="reveal">
+      <div class="section-title" style="text-align:left; margin-bottom: 20px;">
+        <h2>Mappa dello zoo</h2>
+        <p style="margin:0;">Tocca i punti sulla mappa per scoprire ogni area.</p>
+      </div>
+
+      <div class="interactive-map">
+        <div class="map-frame">
+          <img src="img/Mappa.jpg" alt="Mappa dello Zoo">
+        </div>
+
+        <button class="map-hotspot" style="top: 30%; left: 25%;" data-popup="popupSavana" aria-label="Zona Savana"></button>
+        <div class="map-popup" id="popupSavana" style="top: 22%; left: 30%;">
+          <button class="map-popup-close" aria-label="Chiudi">&times;</button>
+          <h4>Zona Savana</h4>
+          <p>Leoni, zebre e le altre specie della savana africana.</p>
+        </div>
+
+        <button class="map-hotspot" style="top: 55%; left: 62%;" data-popup="popupRettili" aria-label="Zona Rettili"></button>
+        <div class="map-popup" id="popupRettili" style="top: 47%; left: 55%;">
+          <button class="map-popup-close" aria-label="Chiudi">&times;</button>
+          <h4>Zona Rettili</h4>
+          <p>Coccodrilli, serpenti e draghi di Komodo in ambienti ricostruiti.</p>
+        </div>
+
+        <button class="map-hotspot" style="top: 70%; left: 30%;" data-popup="popupForesta" aria-label="Foresta Pluviale"></button>
+        <div class="map-popup" id="popupForesta" style="top: 62%; left: 20%;">
+          <button class="map-popup-close" aria-label="Chiudi">&times;</button>
+          <h4>Foresta Pluviale</h4>
+          <p>Panda, lemuri e scimmie tra vegetazione tropicale.</p>
+        </div>
+
+        <button class="map-hotspot" style="top: 40%; left: 80%;" data-popup="popupBambini" aria-label="Area Bambini"></button>
+        <div class="map-popup" id="popupBambini" style="top: 32%; left: 62%;">
+          <button class="map-popup-close" aria-label="Chiudi">&times;</button>
+          <h4>Area Bambini</h4>
+          <p>Laboratori didattici, area picnic e punto informazioni.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-title" style="text-align:left; margin-bottom: 20px;">
+        <h2>Domande frequenti</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="true" aria-controls="faq1">
+          Quali sono gli orari di apertura?
+        </button>
+        <div class="faq-answer" id="faq1">
+          Lo zoo è aperto tutti i giorni dalle 9:00 alle 18:00.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          Gli animali sono liberi?
+        </button>
+        <div class="faq-answer" id="faq2" style="display:none;">
+          Gli animali vivono in ambienti protetti che simulano i loro habitat naturali.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+          Ci sono zone dello zoo sconsigliate ai bambini?
+        </button>
+        <div class="faq-answer" id="faq3" style="display:none;">
+          Il nostro zoo è sicuro al 100%. Tutte le aree sono adatte ai bambini e progettate per garantire la loro sicurezza.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+          Posso dare da mangiare agli animali?
+        </button>
+        <div class="faq-answer" id="faq4" style="display:none;">
+          No, è possibile portare cibo da casa, ma ti invitiamo a utilizzare le aree picnic designate per la consumazione e a non nutrire per nessun motivo gli animali.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+          Lo zoo è accessibile per persone con disabilità?
+        </button>
+        <div class="faq-answer" id="faq5" style="display:none;">
+          Sì, lo zoo è completamente accessibile. Disponiamo di rampe, servizi igienici accessibili e sedie a rotelle disponibili su richiesta.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container-narrow">
+    <div class="section-title reveal">
+      <h2>Cosa dicono i visitatori</h2>
+    </div>
+
+    <div class="zoo-grid zoo-grid-3">
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Giornata bellissima con i bambini, il laboratorio sui rettili li ha conquistati."</p>
+        <div class="review-author">
+          <div class="review-avatar">F</div>
+          <div>
+            <strong>Federica R.</strong>
+            <span>Visita di famiglia</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Il tour guidato nel regno dei volatili vale da solo il biglietto. Guide molto preparate."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <strong>Marco T.</strong>
+            <span>Tour guidato</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Struttura pulita e ben tenuta, gli habitat sembrano curati davvero nel dettaglio."</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <strong>Sara D.</strong>
+            <span>Visita singola</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="js/script.js"></script>
+<script type="module" src="js/nav-auth.js"></script>
+</body>
+</html>

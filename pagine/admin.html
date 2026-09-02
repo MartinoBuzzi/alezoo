@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Area amministrazione ALEZOO">
+  <title>Area Admin - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Area Admin</h1>
+    <p class="lead">Elenco di tutti gli ordini ricevuti.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow" style="max-width: 780px;">
+
+    <div id="guestMessage" style="display:none; text-align:center;">
+      <p>Devi accedere per vedere questa pagina.</p>
+      <a href="login.html" class="btn-zoo btn-zoo-primary">Accedi</a>
+    </div>
+
+    <div id="deniedMessage" style="display:none; text-align:center;">
+      <p>Accesso riservato agli amministratori.</p>
+    </div>
+
+    <div id="ordersWrap" style="display:none;">
+      <div id="ordersList"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+<script type="module">
+  import { db } from "../js/firebase-init.js";
+  import { osservaAutenticazione } from "../js/auth.js";
+  import { isUtenteAdmin } from "../js/admin.js";
+  import {
+    collection,
+    getDocs,
+    orderBy,
+    query
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const guestMessage = document.getElementById("guestMessage");
+  const deniedMessage = document.getElementById("deniedMessage");
+  const ordersWrap = document.getElementById("ordersWrap");
+  const ordersList = document.getElementById("ordersList");
+
+  osservaAutenticazione(async (user) => {
+    guestMessage.style.display = "none";
+    deniedMessage.style.display = "none";
+    ordersWrap.style.display = "none";
+
+    if (!user) {
+      guestMessage.style.display = "block";
+      return;
+    }
+
+    const admin = await isUtenteAdmin(user.uid);
+    if (!admin) {
+      deniedMessage.style.display = "block";
+      return;
+    }
+
+    ordersWrap.style.display = "block";
+    await caricaOrdini();
+  });
+
+  async function caricaOrdini() {
+    const q = query(collection(db, "ordini"), orderBy("creato", "desc"));
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      ordersList.innerHTML = '<p class="cart-empty">Nessun ordine ricevuto finora.</p>';
+      return;
+    }
+
+    ordersList.innerHTML = snap.docs.map((docSnap) => {
+      const ordine = docSnap.data();
+      const data = ordine.creato ? ordine.creato.toDate().toLocaleString("it-IT") : "—";
+      const articoliHtml = ordine.articoli.map((a) => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <h4>${a.nome}</h4>
+            <span>Quantità: ${a.quantita} — €${a.prezzo} cad.</span>
+          </div>
+        </div>
+      `).join("");
+
+      return `
+        <div class="zoo-card" style="margin-bottom: 20px; padding: 22px 24px;">
+          <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom: 12px;">
+            <strong>${ordine.email}</strong>
+            <span style="color: var(--ink-soft); font-size: 0.88rem;">${data}</span>
+          </div>
+          ${articoliHtml}
+          <div class="cart-total" style="padding-top: 12px;">
+            <span>Totale</span>
+            <span>€${ordine.totale}</span>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+</script>
+</body>
+</html>

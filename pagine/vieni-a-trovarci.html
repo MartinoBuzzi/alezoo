@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sezione: vieni a trovarci">
+  <title>Vieni a Trovarci - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Vieni a trovarci!</h1>
+    <p class="lead">Scopri il mondo magico degli animali: dalle creature più affascinanti alle specie più rare.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow zoo-grid zoo-grid-2">
+    <div>
+      <h2>Benvenuti allo zoo!</h2>
+      <p>
+        Scopri il mondo magico degli animali: dalle creature più affascinanti alle specie più rare.
+        Un'esperienza indimenticabile per tutta la famiglia!
+      </p>
+      <p>
+        Esplora le nostre attrazioni e lasciati incantare dalla bellezza della natura.
+        Puoi ottenere maggiori informazioni sui nostri prezzi cliccando
+        <a href="prezzi-orari.html">qui</a>.
+      </p>
+    </div>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="../imgcarosello/drago1.jpg" alt="Drago di Komodo">
+        </div>
+        <div class="carousel-slide">
+          <img src="../imgcarosello/rana1.jpg" alt="Rana">
+        </div>
+        <div class="carousel-slide">
+          <img src="../imgcarosello/scimmia1.jpg" alt="Scimmia">
+        </div>
+        <div class="carousel-slide">
+          <img src="../imgcarosello/snake1.jpg" alt="Serpente">
+        </div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Slide precedente">&#8249;</button>
+      <button class="carousel-btn next" aria-label="Slide successiva">&#8250;</button>
+      <div class="carousel-dots"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+</body>
+</html>

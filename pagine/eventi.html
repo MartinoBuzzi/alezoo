@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sezione: Eventi e aggiornamenti dello zoo">
+  <title>Eventi e Aggiornamenti - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Eventi e aggiornamenti</h1>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow zoo-grid" style="grid-template-columns: 2fr 1fr;">
+    <div>
+      <h2 style="text-align:center;">Prossimi eventi</h2>
+
+      <div class="zoo-table-wrap" style="margin-top: 24px;">
+        <table class="zoo-table">
+          <thead>
+            <tr>
+              <th><span class="material-icons">event</span><br>Data</th>
+              <th><span class="material-icons">celebration</span><br>Evento</th>
+              <th><span class="material-icons">info</span><br>Descrizione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2 Giugno 2025</td>
+              <td><span class="material-icons" style="vertical-align:middle; color: var(--forest);">psychology</span> Laboratorio Bambini</td>
+              <td>Attività interattiva per conoscere da vicino rettili e anfibi.</td>
+            </tr>
+            <tr>
+              <td>13 Giugno 2025</td>
+              <td><span class="material-icons" style="vertical-align:middle; color: var(--clay);">nights_stay</span> La notte allo zoo</td>
+              <td>Esperienza unica per osservare gli animali notturni in azione.</td>
+            </tr>
+            <tr>
+              <td>25 Giugno 2025</td>
+              <td><span class="material-icons" style="vertical-align:middle; color: var(--saddle);">landscape</span> Giornata della savana</td>
+              <td>Visita speciale con focus su leoni, zebre e altri animali esotici.</td>
+            </tr>
+            <tr>
+              <td>30 Giugno 2025</td>
+              <td><span class="material-icons" style="vertical-align:middle; color: var(--forest);">bug_report</span> Laboratorio: il mondo degli insetti</td>
+              <td>Un nuovo laboratorio per vedere più da vicino il loro mondo.</td>
+            </tr>
+            <tr>
+              <td>6 Luglio 2025</td>
+              <td><span class="material-icons" style="vertical-align:middle; color: var(--forest);">eco</span> Approccio alla natura</td>
+              <td>Evento culturale con esperti nel settore della tutela ambientale.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="text-align:center; margin-top: 32px;">
+        <h4>Vuoi partecipare a un evento?</h4>
+        <p style="color: var(--ink-soft);">Compila il modulo per prenotare il tuo posto!</p>
+        <a href="prenota.html" class="btn-zoo btn-zoo-outline">Prenota ora</a>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="text-align:center;">Eventi passati</h3>
+
+      <div class="zoo-card" style="margin-bottom: 16px;">
+        <img src="../img_liste/ape.jpg" alt="Ape">
+        <div class="zoo-card-body">
+          <h5>Giornata degli impollinatori</h5>
+          <p>Evento dedicato alla biodiversità e al ruolo delle api.</p>
+        </div>
+      </div>
+
+      <div class="zoo-card">
+        <img src="../img_liste/lemuri.jpg" alt="Lemuri">
+        <div class="zoo-card-body">
+          <h5>Passeggiata con i lemuri</h5>
+          <p>Un incontro ravvicinato con questi simpatici animali!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+</body>
+</html>

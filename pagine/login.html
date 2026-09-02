@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accedi o registrati per gestire il tuo carrello ALEZOO">
+  <title>Accedi - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Accedi al tuo account</h1>
+    <p class="lead">Registrati per prenotare biglietti e gestire il tuo carrello.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow" style="max-width: 480px;">
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin">Accedi</button>
+      <button class="auth-tab" id="tabRegistrati">Registrati</button>
+    </div>
+
+    <div class="auth-message" id="authMessage"></div>
+
+    <div class="auth-panel active" id="panelLogin">
+      <form class="zoo-form" id="loginForm">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required>
+
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required>
+
+        <div style="text-align:center;">
+          <button type="submit" class="btn-zoo btn-zoo-primary">Accedi</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="auth-panel" id="panelRegistrati">
+      <form class="zoo-form" id="registratiForm">
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" required>
+
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" required minlength="6">
+
+        <div style="text-align:center;">
+          <button type="submit" class="btn-zoo btn-zoo-primary">Crea account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+<script type="module">
+  import { accedi, registrati, messaggioErroreAuth } from "../js/auth.js";
+
+  const message = document.getElementById("authMessage");
+  const tabLogin = document.getElementById("tabLogin");
+  const tabRegistrati = document.getElementById("tabRegistrati");
+  const panelLogin = document.getElementById("panelLogin");
+  const panelRegistrati = document.getElementById("panelRegistrati");
+
+  function mostraMessaggio(testo, tipo) {
+    message.textContent = testo;
+    message.className = "auth-message show " + tipo;
+  }
+
+  tabLogin.addEventListener("click", () => {
+    tabLogin.classList.add("active");
+    tabRegistrati.classList.remove("active");
+    panelLogin.classList.add("active");
+    panelRegistrati.classList.remove("active");
+    message.className = "auth-message";
+  });
+
+  tabRegistrati.addEventListener("click", () => {
+    tabRegistrati.classList.add("active");
+    tabLogin.classList.remove("active");
+    panelRegistrati.classList.add("active");
+    panelLogin.classList.remove("active");
+    message.className = "auth-message";
+  });
+
+  document.getElementById("loginForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+      await accedi(email, password);
+      mostraMessaggio("Accesso effettuato, reindirizzamento in corso...", "success");
+      setTimeout(() => { window.location.href = "carrello.html"; }, 900);
+    } catch (errore) {
+      mostraMessaggio(messaggioErroreAuth(errore), "error");
+    }
+  });
+
+  document.getElementById("registratiForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("regEmail").value;
+    const password = document.getElementById("regPassword").value;
+
+    try {
+      await registrati(email, password);
+      mostraMessaggio("Account creato, reindirizzamento in corso...", "success");
+      setTimeout(() => { window.location.href = "carrello.html"; }, 900);
+    } catch (errore) {
+      mostraMessaggio(messaggioErroreAuth(errore), "error");
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sezione: Prezzi e orari dello zoo">
+  <title>Prezzi e Orari - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Prezzi e orari</h1>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow zoo-grid zoo-grid-2">
+    <div>
+      <h2>Biglietteria</h2>
+      <p>
+        La nostra biglietteria è aperta tutti i giorni dalle 9:00 alle 15:00. Offriamo una varietà
+        di opzioni di biglietti per soddisfare le esigenze di tutti i visitatori. Che tu venga da
+        solo, con la famiglia o in gruppo, abbiamo l'opzione giusta per te. Approfitta delle nostre
+        offerte speciali e pacchetti famiglia per rendere la tua visita ancora più conveniente. Per
+        ulteriori dettagli, non esitare a contattarci al numero indicato.
+      </p>
+      <div class="map-frame">
+        <img src="../img_liste/biglietteria.jpg" alt="Biglietteria dello Zoo">
+      </div>
+    </div>
+
+    <div>
+      <h3 style="text-align:center;">Biglietti e tariffe</h3>
+      <div class="zoo-table-wrap">
+        <table class="zoo-table">
+          <thead>
+            <tr>
+              <th>Tipologia</th>
+              <th>Prezzo</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Adulti</td>
+              <td>€15</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="adulti" data-nome="Biglietto Adulti" data-prezzo="15" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Bambini (sotto i 12 anni)</td>
+              <td>€8</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="bambini" data-nome="Biglietto Bambini" data-prezzo="8" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Anziani (sopra i 65 anni)</td>
+              <td>€10</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="anziani" data-nome="Biglietto Anziani" data-prezzo="10" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Famiglia (2 adulti e 2 bambini)</td>
+              <td>€40</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="famiglia" data-nome="Biglietto Famiglia" data-prezzo="40" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr class="subheader">
+              <th>Attività speciali (dalle ore 15)</th>
+              <th>Prezzo</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>Laboratori Under 10</td>
+              <td>€8</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="lab-under10" data-nome="Laboratorio Under 10" data-prezzo="8" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Laboratori Under 15</td>
+              <td>€12</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="lab-under15" data-nome="Laboratorio Under 15" data-prezzo="12" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Laboratorio aperto a tutti</td>
+              <td>€15</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="lab-tutti" data-nome="Laboratorio Aperto a Tutti" data-prezzo="15" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Tour da 1 ora</td>
+              <td>€10</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="tour-1h" data-nome="Tour Guidato 1 ora" data-prezzo="10" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+            <tr>
+              <td>Tour da 2 ore</td>
+              <td>€18</td>
+              <td><button class="btn-zoo btn-zoo-outline add-to-cart" data-id="tour-2h" data-nome="Tour Guidato 2 ore" data-prezzo="18" style="padding:6px 16px; font-size:0.8rem;">Aggiungi</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="addToCartMessage" class="auth-message" style="margin-top:18px;"></p>
+      <p style="text-align:center; margin-top: 18px; color: var(--ink-soft);">
+        Per informazioni su pacchetti speciali e offerte, contattaci al numero <strong>+39 123 456789</strong>.
+        Tutti i biglietti sono acquistabili anche direttamente in biglietteria.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+<script type="module">
+  import { auth } from "../js/firebase-init.js";
+  import { osservaAutenticazione } from "../js/auth.js";
+  import { aggiungiAlCarrello } from "../js/cart.js";
+
+  let utenteCorrente = null;
+  osservaAutenticazione((user) => { utenteCorrente = user; });
+
+  const message = document.getElementById("addToCartMessage");
+
+  document.querySelectorAll(".add-to-cart").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!utenteCorrente) {
+        message.textContent = "Devi accedere per aggiungere articoli al carrello.";
+        message.className = "auth-message show error";
+        return;
+      }
+
+      await aggiungiAlCarrello(utenteCorrente.uid, {
+        id: btn.dataset.id,
+        nome: btn.dataset.nome,
+        prezzo: Number(btn.dataset.prezzo)
+      });
+
+      message.textContent = btn.dataset.nome + " aggiunto al carrello.";
+      message.className = "auth-message show success";
+    });
+  });
+</script>
+</body>
+</html>

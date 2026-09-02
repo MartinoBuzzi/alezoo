@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galleria fotografica dello zoo di Alessandria">
+  <title>Galleria - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Galleria</h1>
+    <p class="lead">Uno sguardo agli animali e ai momenti più belli dello zoo.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="../imgcarosello/drago1.jpg" alt="Drago di Komodo">
+          <div class="carousel-caption">
+            <h3>Drago di Komodo</h3>
+            <p>Il più grande rettile vivente, protagonista della zona Rettili.</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="../imgcarosello/rana1.jpg" alt="Rana">
+          <div class="carousel-caption">
+            <h3>Rana dei tropici</h3>
+            <p>Colori vivaci nella serra della foresta pluviale.</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="../imgcarosello/scimmia1.jpg" alt="Scimmia">
+          <div class="carousel-caption">
+            <h3>Scimmie della foresta</h3>
+            <p>Tra i visitatori più curiosi e attivi dello zoo.</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="../imgcarosello/snake1.jpg" alt="Serpente">
+          <div class="carousel-caption">
+            <h3>Serpenti</h3>
+            <p>Un'area dedicata a rettili e serpenti di diverse specie.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Slide precedente">&#8249;</button>
+      <button class="carousel-btn next" aria-label="Slide successiva">&#8250;</button>
+      <div class="carousel-dots"></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--sand);">
+  <div class="container-narrow">
+    <div class="section-title">
+      <h2>Scatti dallo zoo</h2>
+      <p>Tocca un'immagine per ingrandirla.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" data-lightbox-src="../imgcarosello/drago2.jpg" data-lightbox-alt="Drago di Komodo">
+        <img src="../imgcarosello/drago2.jpg" alt="Drago di Komodo">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../imgcarosello/rana2.jpg" data-lightbox-alt="Rana">
+        <img src="../imgcarosello/rana2.jpg" alt="Rana">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../imgcarosello/scimmia2.jpg" data-lightbox-alt="Scimmia">
+        <img src="../imgcarosello/scimmia2.jpg" alt="Scimmia">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../imgcarosello/snake2.jpg" data-lightbox-alt="Serpente">
+        <img src="../imgcarosello/snake2.jpg" alt="Serpente">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../img/leone1.jpg" data-lightbox-alt="Leone">
+        <img src="../img/leone1.jpg" alt="Leone">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../img/zebra1.jpg" data-lightbox-alt="Zebra">
+        <img src="../img/zebra1.jpg" alt="Zebra">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../img/panda1.jpg" data-lightbox-alt="Panda">
+        <img src="../img/panda1.jpg" alt="Panda">
+      </div>
+      <div class="gallery-item" data-lightbox-src="../img/coccodrillo1.jpg" data-lightbox-alt="Coccodrillo">
+        <img src="../img/coccodrillo1.jpg" alt="Coccodrillo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Chiudi">&times;</button>
+  <img src="" alt="">
+</div>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+</body>
+</html>

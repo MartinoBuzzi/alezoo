@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Il tuo carrello ALEZOO">
+  <title>Carrello - ALEZOO</title>
+
+  <link rel="icon" type="image/png" href="../img/logo_alezoo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body data-root="../">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../img/logo_alezoo.png" alt="Logo dello zoo di Alessandria">
+      <span>ALEZOO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="vieni-a-trovarci.html">Vieni a trovarci</a></li>
+      <li><a href="attivita.html">Attività</a></li>
+      <li><a href="prezzi-orari.html">Prezzi e orari</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li id="cartNavItem" style="display:none;"><a href="carrello.html">Carrello <span class="cart-badge" id="cartCount">0</span></a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html">Area Admin</a></li>
+      <li id="authNavItem"><a href="login.html">Accedi</a></li>
+    </ul>
+
+    <a href="../index.html" class="nav-back">&larr; Home</a>
+  </div>
+</nav>
+
+<header class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Il tuo carrello</h1>
+  </div>
+</header>
+
+<section>
+  <div class="container-narrow" style="max-width: 640px;">
+
+    <div id="guestMessage" style="display:none; text-align:center;">
+      <p>Devi accedere per vedere il tuo carrello.</p>
+      <a href="login.html" class="btn-zoo btn-zoo-primary">Accedi o registrati</a>
+    </div>
+
+    <div id="cartWrap" style="display:none;">
+      <div id="cartItems"></div>
+      <div class="cart-total">
+        <span>Totale</span>
+        <span id="cartTotal">€0</span>
+      </div>
+
+      <div style="display:flex; gap:16px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
+        <button class="btn-zoo btn-zoo-outline" id="svuotaBtn">Svuota carrello</button>
+        <button class="btn-zoo btn-zoo-primary" id="checkoutBtn">Completa ordine</button>
+      </div>
+
+      <p id="checkoutMessage" class="auth-message" style="margin-top:20px;"></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <p>&copy; 2026 ALEZOO — Zoo di Alessandria</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script type="module" src="../js/nav-auth.js"></script>
+<script type="module">
+  import { osservaAutenticazione } from "../js/auth.js";
+  import { ottieniCarrello, aggiornaQuantita, svuotaCarrello } from "../js/cart.js";
+  import { creaOrdine } from "../js/orders.js";
+
+  const guestMessage = document.getElementById("guestMessage");
+  const cartWrap = document.getElementById("cartWrap");
+  const cartItemsEl = document.getElementById("cartItems");
+  const cartTotalEl = document.getElementById("cartTotal");
+  const checkoutMessage = document.getElementById("checkoutMessage");
+
+  let utenteCorrente = null;
+
+  osservaAutenticazione((user) => {
+    utenteCorrente = user;
+    if (user) {
+      guestMessage.style.display = "none";
+      cartWrap.style.display = "block";
+      renderCarrello();
+    } else {
+      guestMessage.style.display = "block";
+      cartWrap.style.display = "none";
+    }
+  });
+
+  async function renderCarrello() {
+    const articoli = await ottieniCarrello(utenteCorrente.uid);
+
+    if (articoli.length === 0) {
+      cartItemsEl.innerHTML = '<p class="cart-empty">Il carrello è vuoto. Vai alla pagina Prezzi e Orari per aggiungere un biglietto.</p>';
+      cartTotalEl.textContent = "€0";
+      return;
+    }
+
+    cartItemsEl.innerHTML = articoli.map((a) => `
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <h4>${a.nome}</h4>
+          <span>€${a.prezzo} cad.</span>
+        </div>
+        <div class="cart-item-controls">
+          <button class="qty-btn" data-action="meno" data-id="${a.id}">-</button>
+          <span>${a.quantita}</span>
+          <button class="qty-btn" data-action="piu" data-id="${a.id}">+</button>
+        </div>
+      </div>
+    `).join("");
+
+    const totale = articoli.reduce((tot, a) => tot + a.prezzo * a.quantita, 0);
+    cartTotalEl.textContent = "€" + totale;
+
+    cartItemsEl.querySelectorAll(".qty-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const id = btn.dataset.id;
+        const articolo = articoli.find((a) => a.id === id);
+        const nuovaQuantita = btn.dataset.action === "piu" ? articolo.quantita + 1 : articolo.quantita - 1;
+        await aggiornaQuantita(utenteCorrente.uid, id, nuovaQuantita);
+        renderCarrello();
+      });
+    });
+  }
+
+  document.getElementById("svuotaBtn").addEventListener("click", async () => {
+    await svuotaCarrello(utenteCorrente.uid);
+    renderCarrello();
+  });
+
+  document.getElementById("checkoutBtn").addEventListener("click", async () => {
+    const articoli = await ottieniCarrello(utenteCorrente.uid);
+    if (articoli.length === 0) return;
+
+    const totale = articoli.reduce((tot, a) => tot + a.prezzo * a.quantita, 0);
+
+    try {
+      await creaOrdine(utenteCorrente.uid, utenteCorrente.email, articoli, totale);
+      await svuotaCarrello(utenteCorrente.uid);
+      renderCarrello();
+      checkoutMessage.textContent = "Ordine confermato! Riceverai una email di riepilogo (demo, nessun pagamento reale).";
+      checkoutMessage.className = "auth-message show success";
+    } catch (errore) {
+      checkoutMessage.textContent = "Errore durante la conferma dell'ordine. Riprova.";
+      checkoutMessage.className = "auth-message show error";
+    }
+  });
+</script>
+</body>
+</html>
