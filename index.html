@@ -17,9 +17,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    /* Topbar di ritorno al Portfolio coordinata con la grafica ALEZOO */
+    .portfolio-bar {
+      background-color: #1e2d24;
+      color: #e8ece9;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 0.85rem;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .portfolio-bar a {
+      color: #88c199;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .portfolio-bar a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .portfolio-bar .eyebrow-tag {
+      opacity: 0.75;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 600px) {
+      .portfolio-bar .eyebrow-tag {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body data-root="">
+
+<!-- TOPBAR RITORNO AL PORTFOLIO -->
+<div class="portfolio-bar">
+  <a href="https://martinobuzzi.github.io/Portfolio/">&larr; Torna al Portfolio</a>
+  <span class="eyebrow-tag">// progetto demo · web application</span>
+</div>
 
 <nav class="site-nav">
   <div class="nav-inner">
